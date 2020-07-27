@@ -1,5 +1,8 @@
 const functions = require('firebase-functions');
 const app = require('express')();
+const admin = require('firebase-admin');
+admin.initializeApp();
+const db = admin.firestore();
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
@@ -10,15 +13,23 @@ const app = require('express')();
 // });
 
 
-exports.helloWorld = functions.https.onRequest((request, response) => {
-     response.send("Hello from Firebase!");
-});
+const getAllCompanies = (request, response) => {
+  db.collection("product").where('isactive', '==', true).get()
+  .then((data) => {
+    if(data.empty) {
+      return response.json({error: "There is no data"})
+    }
+    const products = [] 
+    data.forEach(doc => {
+      products.push(doc.data())
+    })
+    return response.json(products)
+  })
+  .catch((err) => {
+    console.error(err);
+    return response.status(500).json({ error: err});
+  });
+}
 
-
-
-const {
-    getCompanies
-} = require('./APIs/companies')
-
-app.get('/companies', getCompanies);
+app.get('/companies', getAllCompanies);
 exports.api = functions.https.onRequest(app);
