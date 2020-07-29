@@ -13,7 +13,7 @@ const db = admin.firestore();
 // });
 
 
-const getAllCompanies = (request, response) => {
+const getAllProducts = (request, response) => {
   db.collection("product").where('isactive', '==', true).get()
   .then((data) => {
     if(data.empty) {
@@ -31,5 +31,5 @@ const getAllCompanies = (request, response) => {
   });
 }
 
-app.get('/companies', getAllCompanies);
+app.get('/products', getAllProducts);
 exports.api = functions.https.onRequest(app);
