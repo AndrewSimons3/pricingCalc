@@ -22,11 +22,11 @@ class PricingCalculator extends React.Component {
     if (products && products.length > 0) {
       return (
         <div>
-        {
+        {/* {
           products.map((candidate, key) => {
             // return <div index={key}><img src={`https://electionbettingodds.com/${candidate.shortname}.png`}/><span>{candidate.win_probability}</span></div>
           })
-        }
+        } */}
         </div>
       );
     }

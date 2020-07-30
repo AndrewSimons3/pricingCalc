@@ -6,7 +6,6 @@ import store from './redux/Store'
 import Router from './Router'
 
 
-
 class App extends React.Component {
 
   state = {
