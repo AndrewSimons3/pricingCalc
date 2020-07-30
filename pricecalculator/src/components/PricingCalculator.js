@@ -1,6 +1,7 @@
 import React from 'react'
 import Table from '@material-ui/core/Table'
 import TableContainer from '@material-ui/core/TableContainer'
+import Select from '@material-ui/core/Select';
 
 class PricingCalculator extends React.Component {
 
@@ -16,18 +17,37 @@ class PricingCalculator extends React.Component {
     console.log(this.props.products);
   }
 
+  updateResults() {
+
+  }
+
   render() {
     const { products } = this.props;
     console.log(products);
     if (products && products.length > 0) {
       return (
-        <div>
-        {/* {
-          products.map((candidate, key) => {
-            // return <div index={key}><img src={`https://electionbettingodds.com/${candidate.shortname}.png`}/><span>{candidate.win_probability}</span></div>
+        // <Select
+        //   labelId="demo-simple-select-label"
+        //   id="demo-simple-select"
+        //   value={age}
+        //   onChange={handleChange}
+        // >
+        //   <MenuItem value={10}>Ten</MenuItem>
+        //   <MenuItem value={20}>Twenty</MenuItem>
+        //   <MenuItem value={30}>Thirty</MenuItem>
+        // </Select>
+        <Select 
+          labelId="products"
+          id="product-select"
+          value={""}
+          onChange={this.updateResults}>
+        {
+
+          products.map((product, key) => {
+            return <option value={product.id} index={key}>{product.name}</option>
           })
-        } */}
-        </div>
+        }
+        </Select>
       );
     }
 
