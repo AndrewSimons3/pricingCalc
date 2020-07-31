@@ -2,6 +2,7 @@ import React from 'react'
 import Table from '@material-ui/core/Table'
 import TableContainer from '@material-ui/core/TableContainer'
 import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem'
 
 class PricingCalculator extends React.Component {
 
