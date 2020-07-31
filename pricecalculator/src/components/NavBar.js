@@ -34,9 +34,9 @@ export default function ButtonAppBar(props) {
             {/* <MenuIcon /> */}
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            News
+            360 Home Connect Price Calculator
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button onClick={logOut} to='/login'color="inherit">{loginButtonText}</Button>
           <Link className='link' onClick={logOut} to='/login'>{loginButtonText}</Link>
         </Toolbar>
       </AppBar>
