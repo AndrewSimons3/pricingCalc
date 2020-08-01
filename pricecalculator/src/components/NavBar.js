@@ -19,11 +19,17 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  link: {
+    padding: '6px 8px',
+    textDecoration: 'none',
+    color: 'white',
+    fontWeight: '600',
+  }
 }));
 
 export default function ButtonAppBar(props) {
   const isAuthenticated = props.loggedIn
-  const loginButtonText = isAuthenticated ? "Logout" : "Login"
+  const loginButtonText = isAuthenticated ? "LOGOUT" : "LOGIN"
   const classes = useStyles();
 
   return (
@@ -36,9 +42,8 @@ export default function ButtonAppBar(props) {
           <Typography variant="h6" className={classes.title}>
             360 Home Connect Price Calculator
           </Typography>
-          {/* <Button onClick={logOut} to='/login'color="inherit">{loginButtonText}</Button> */}
-          <Link className='link' onClick={logOut} to='/login'>{loginButtonText}</Link>
-          <Link className='link' to='/electric'>Electric</Link>
+          <Link className={classes.link} onClick={logOut} to='/login'>{loginButtonText}</Link>
+          <Link className={classes.link} to='/electric'>ELECTRIC</Link>
         </Toolbar>
       </AppBar>
     </div>

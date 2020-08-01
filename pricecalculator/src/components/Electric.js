@@ -19,7 +19,7 @@ export default function AutoGrid() {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={3}>
+      <Grid container>
         <Grid item xs>
           <Paper className={classes.paper}>xs</Paper>
         </Grid>
@@ -30,12 +30,12 @@ export default function AutoGrid() {
           <Paper className={classes.paper}>xs</Paper>
         </Grid>
       </Grid>
-      <Grid container spacing={3}>
+      <Grid container>
         <Grid item xs>
           <Paper className={classes.paper}>xs</Paper>
         </Grid>
-        <Grid item xs={6}>
-          <Paper className={classes.paper}>xs=6</Paper>
+        <Grid item xs>
+          <Paper className={classes.paper}>xs</Paper>
         </Grid>
         <Grid item xs>
           <Paper className={classes.paper}>xs</Paper>

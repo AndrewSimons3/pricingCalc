@@ -34,8 +34,8 @@ const Router = () => {
   return (
       <Switch>
           <Route path="/login" component={Login} />
-          <UnProtectedRoute exact path="/" component={PricingCalculator} />
-          <UnProtectedRoute exact path="/electric" component={Electric} />
+          <ProtectedRoute exact path="/" component={PricingCalculator} />
+          <ProtectedRoute exact path="/electric" component={Electric} />
       </Switch>
   );
 };
