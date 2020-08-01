@@ -3,11 +3,25 @@ import Table from '@material-ui/core/Table'
 import TableContainer from '@material-ui/core/TableContainer'
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem'
+import InputLabel from '@material-ui/core/InputLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import { makeStyles } from '@material-ui/core/styles';
 
 class PricingCalculator extends React.Component {
 
   constructor(props) {
     super(props);
+
+    // const useStyles = makeStyles((theme) => ({
+    //   formControl: {
+    //     margin: theme.spacing(1),
+    //     minWidth: 120,
+    //   },
+    //   selectEmpty: {
+    //     marginTop: theme.spacing(2),
+    //   },
+    // }));
   }
 
   async componentDidMount() {
@@ -23,32 +37,41 @@ class PricingCalculator extends React.Component {
   }
 
   render() {
+    // const classes = useStyles();
     const { products } = this.props;
     console.log(products);
     if (products && products.length > 0) {
       return (
-        // <Select
-        //   labelId="demo-simple-select-label"
-        //   id="demo-simple-select"
-        //   value={age}
-        //   onChange={handleChange}
-        // >
-        //   <MenuItem value={10}>Ten</MenuItem>
-        //   <MenuItem value={20}>Twenty</MenuItem>
-        //   <MenuItem value={30}>Thirty</MenuItem>
-        // </Select>
-        <Select 
+        <FormControl>
+        {/* className={classes.formControl}> */}
+           <InputLabel id="Products">Products</InputLabel>
+            <Select
           labelId="products"
           id="product-select"
           value={""}
           onChange={this.updateResults}>
-        {
-
-          products.map((product, key) => {
-            return <option value={product.id} index={key}>{product.name}</option>
+          {
+            products.map((product, key) => {
+              return <option value={product.id} index={key}>{product.name}</option>
           })
         }
-        </Select>
+              {/* <MenuItem value={10}>Ten</MenuItem>
+              <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem> */}
+            </Select>
+      </FormControl>
+        // <Select
+        //   labelId="products"
+        //   id="product-select"
+        //   value={""}
+        //   onChange={this.updateResults}>
+        // {
+
+        //   products.map((product, key) => {
+        //     return <option value={product.id} index={key}>{product.name}</option>
+        //   })
+        // }
+        // </Select>
       );
     }
 

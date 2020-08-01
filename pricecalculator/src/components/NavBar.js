@@ -36,8 +36,9 @@ export default function ButtonAppBar(props) {
           <Typography variant="h6" className={classes.title}>
             360 Home Connect Price Calculator
           </Typography>
-          <Button onClick={logOut} to='/login'color="inherit">{loginButtonText}</Button>
+          {/* <Button onClick={logOut} to='/login'color="inherit">{loginButtonText}</Button> */}
           <Link className='link' onClick={logOut} to='/login'>{loginButtonText}</Link>
+          <Link className='link' to='/electric'>Electric</Link>
         </Toolbar>
       </AppBar>
     </div>
