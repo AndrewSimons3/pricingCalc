@@ -119,7 +119,7 @@ class PricingCalculator extends React.Component {
     })
   }
 
-  getPackages(products) {
+  getPackages() {
     if (!this.state.selectedProductId) {
       return null
     }
@@ -127,12 +127,43 @@ class PricingCalculator extends React.Component {
     return product.packages
   }
 
-  getEquipment(products) {
+  getEquipment() {
     if (!this.state.selectedProductId) {
       return null
     }
     const product = this.getProduct(this.state.selectedProductId)
     return product.equipment
+  }
+
+  getCurrency(decimalValue) {
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2
+      })
+    return formatter.format(decimalValue)
+  }
+
+  getTotalMonthlyCost() {
+    const aPackage = this.getPackage()
+    return aPackage.price
+  }
+
+  getUpFrontCost(product) {
+    const tvCost = this.state.selectedNumOfTvs
+    const initialCost = product.upfrontcost
+    return tvCost + initialCost
+  }
+
+  getPackage() {
+    const packages = this.getPackages()
+    return packages.find(aPackage => {
+      return aPackage.name == this.state.selectedPackageId
+    })
+  }
+
+  getNumTvs(product) {
+    return product.extratvcost.indexOf(this.state.selectedNumOfTvs) + 1
   }
 
   render() {
@@ -224,16 +255,16 @@ class PricingCalculator extends React.Component {
                      Upfront Cost
                    </Typography>
                    <Typography variant="h5" component="h2">
-                     {product.upfrontcost}
+                     {this.getCurrency(this.getUpFrontCost(product))}
                    </Typography>
                    <Typography className={classes.title} color="textSecondary" gutterBottom>
                      Total Monthly Cost
                    </Typography>
                    <Typography variant="h5" component="h2">
-                     $75.63
+                     {this.getCurrency(this.getTotalMonthlyCost())}
                    </Typography>
                    <Typography variant="body2" component="p">
-                     AT&T TV Entertainment Package with 1 Standard TV Box
+                     {product.name} {this.getPackage().name} package with {this.getNumTvs(product)} TV(s)
                    </Typography>
                  </CardContent>
                </Card>           
