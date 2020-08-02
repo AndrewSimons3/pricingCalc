@@ -3,8 +3,15 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem'
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/styles';
+import Box from '@material-ui/core/Box';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import NumberFormat from 'react-number-format';
 
 
 const useStyles = (theme) => ({
@@ -25,7 +32,21 @@ const useStyles = (theme) => ({
   },
   fullWidth: {
     width: '100%'
-  }
+  },
+  root: {
+    minWidth: 275,
+  },
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)',
+  },
+  title: {
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
+  },
 });
 
 class PricingCalculator extends React.Component {
@@ -33,12 +54,13 @@ class PricingCalculator extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {selectedProductId: "", selectedPackageId: "", selectedEquipmentId: ""}
+    this.state = {selectedProductId: "", selectedPackageId: "", selectedEquipmentId: "", selectedNumOfTvs: 1}
 
 
     this.updateProductSelect = this.updateProductSelect.bind(this)
     this.updatePackageSelect = this.updatePackageSelect.bind(this)
     this.updateEquipmentSelect = this.updateEquipmentSelect.bind(this)
+    this.updateNumOfTvsSelect = this.updateNumOfTvsSelect.bind(this)
 
   }
 
@@ -53,19 +75,31 @@ class PricingCalculator extends React.Component {
     const product = this.getProduct(productId)
     const packages = product.packages
     const equipment = product.equipment
+    const tvs = product.extratvcost
     var packageId = undefined
     var equipmentId = undefined
+    var numTvs = undefined
+    
     if(packages) {
       packageId = packages[0].name
     }
-    this.setState({selectedProductId: event.target.value, selectedPackageId: packageId})
-    console.log(event.target.value)
-
     if(equipment) {
       equipmentId = equipment[0].name
     }
-    this.setState({selectedProductId: event.target.value, selectedEquipmentId: equipmentId})
+    if(tvs) {
+      numTvs = tvs[0]
+    }
+    this.setState({
+      selectedProductId: event.target.value, 
+      selectedPackageId: packageId,
+      selectedEquipmentId: equipmentId,
+      selectedNumOfTvs: numTvs
+    })
+    console.log(event.target.value)
+
+   
   }
+  
 
   updatePackageSelect(event) {
     this.setState({selectedPackageId: event.target.value})
@@ -73,6 +107,10 @@ class PricingCalculator extends React.Component {
 
   updateEquipmentSelect(event) {
     this.setState({selectedEquipmentId: event.target.value})
+  }
+
+  updateNumOfTvsSelect(event) {
+    this.setState({selectedNumOfTvs: event.target.value})
   }
 
   getProduct(productId) {
@@ -105,6 +143,7 @@ class PricingCalculator extends React.Component {
     console.log(packages);
 
     if (products && products.length > 0) {
+      const product = this.getProduct(this.state.selectedProductId)
       return (
         <div className={classes.formWrapper}>
           <FormControl className={classes.formControl}>
@@ -142,6 +181,7 @@ class PricingCalculator extends React.Component {
                 </div>
               </FormControl>
             )}
+            {this.state.selectedProductId && (
               <FormControl className={classes.formControl}>
                 <div className={classes.fullWidth}>
                  <InputLabel id="equipment-select">Equipment</InputLabel>
@@ -158,6 +198,46 @@ class PricingCalculator extends React.Component {
                   </Select>
               </div>
             </FormControl>
+            )}
+              {this.state.selectedProductId && (
+                <FormControl className={classes.formControl}>
+                  <div className={classes.fullWidth}>
+                    <InputLabel id="tvs-select">Number of Tvs</InputLabel>
+                      <Select className={classes.fullWidth}
+                        labelId="tvs"
+                        id="tvs-select"
+                        value={this.state.selectedNumOfTvs}
+                        onChange={this.updateNumOfTvsSelect}>
+                        {
+                          product.extratvcost.map((tvCost, key) => {
+                            return <MenuItem value={tvCost} key={key}>{key + 1}</MenuItem>
+                          })
+                        }
+                      </Select>
+                  </div>
+                </FormControl>
+              )}
+              {this.state.selectedProductId && (
+                 <Card className={classes.root}>
+                 <CardContent>
+                 <Typography className={classes.title} color="textSecondary" gutterBottom>
+                     Upfront Cost
+                   </Typography>
+                   <Typography variant="h5" component="h2">
+                     {product.upfrontcost}
+                   </Typography>
+                   <Typography className={classes.title} color="textSecondary" gutterBottom>
+                     Total Monthly Cost
+                   </Typography>
+                   <Typography variant="h5" component="h2">
+                     $75.63
+                   </Typography>
+                   <Typography variant="body2" component="p">
+                     AT&T TV Entertainment Package with 1 Standard TV Box
+                   </Typography>
+                 </CardContent>
+               </Card>           
+              )}
       </div>
       );
     }

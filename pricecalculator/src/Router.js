@@ -4,7 +4,6 @@ import PricingCalculator from './containers/PricingCalculator'
 import Login from './components/Login'
 import Electric from './components/Electric'
 import { checkAuth } from './checkAuth'
-import NavBar from './components/NavBar'
 import ButtonAppBar from './components/NavBar'
 
 const ProtectedRoute = ({component: Component, ...rest}) => {
@@ -19,16 +18,16 @@ const ProtectedRoute = ({component: Component, ...rest}) => {
   )
 }
 
-const UnProtectedRoute = ({component: Component, ...rest}) => {
-  return (
-      <Route
-      {...rest}
-      render={(props) => 
-         <div><NavBar loggedIn={checkAuth()}/><Component {...props} loggedIn={checkAuth()} /></div>
-      }
-      />
-  )
-}
+// const UnProtectedRoute = ({component: Component, ...rest}) => {
+//   return (
+//       <Route
+//       {...rest}
+//       render={(props) => 
+//          <div><NavBar loggedIn={checkAuth()}/><Component {...props} loggedIn={checkAuth()} /></div>
+//       }
+//       />
+//   )
+// }
 
 const Router = () => {
   return (
