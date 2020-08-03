@@ -12,6 +12,14 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
+  pageTitle: {
+    margin: 'auto',
+    fontSize: '32px',
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: '50px',
+    fontWeight: 'bold'
+  }
 }));
 
 export default function AutoGrid() {
@@ -19,6 +27,8 @@ export default function AutoGrid() {
 
   return (
     <div className={classes.root}>
+      <div className={classes.pageTitle}>ELECTRIC RATES</div>
+      <br></br>
       <Grid container>
         <Grid item xs>
           <Paper className={classes.paper}>Oncor</Paper>
