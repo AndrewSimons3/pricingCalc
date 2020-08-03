@@ -8,9 +8,14 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   paper: {
-    padding: theme.spacing(2),
+    // padding: theme.spacing(2),
     textAlign: 'center',
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'center',
     color: theme.palette.text.secondary,
+    height: '60px',
+    margin: '1%'
   },
   pageTitle: {
     margin: 'auto',
@@ -19,6 +24,12 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     marginTop: '50px',
     fontWeight: 'bold'
+  },
+  oncorHeader: {
+    fontWeight: 'bold',
+    margin: 'auto',
+    display: 'flex',
+    justifyContent: 'center',
   }
 }));
 
@@ -29,20 +40,51 @@ export default function AutoGrid() {
     <div className={classes.root}>
       <div className={classes.pageTitle}>ELECTRIC RATES</div>
       <br></br>
-      <Grid container>
+      <Grid className={classes.oncorHeader}>
         <Grid item xs>
           <Paper className={classes.paper}>Oncor</Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>12</Paper>
+          <Paper className={classes.paper}>12 Months</Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>24</Paper>
+          <Paper className={classes.paper}>24 Months</Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper className={classes.paper}>36 Months</Paper>
         </Grid>
       </Grid>
       <Grid container>
         <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
+          <Paper className={classes.paper}>Tri-Eagle</Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper className={classes.paper}>10.5 2000kwph<br></br>10.8 1000kwph<br></br>11.3 500kwph</Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper className={classes.paper}>9.9</Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper className={classes.paper}>9.9</Paper>
+        </Grid>
+      </Grid>
+      <Grid container>
+        <Grid item xs>
+          <Paper className={classes.paper}>Discount Power</Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper className={classes.paper}>10.1</Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper className={classes.paper}>9.7</Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper className={classes.paper}>9.5</Paper>
+        </Grid>
+      </Grid>
+      <Grid container>
+        <Grid item xs>
+          <Paper className={classes.paper}>Infinite Energy</Paper>
         </Grid>
         <Grid item xs>
           <Paper className={classes.paper}>test</Paper>
@@ -50,46 +92,33 @@ export default function AutoGrid() {
         <Grid item xs>
           <Paper className={classes.paper}>xs</Paper>
         </Grid>
-      </Grid>
-      <Grid container>
-        <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
-        </Grid>
-        <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
-        </Grid>
         <Grid item xs>
           <Paper className={classes.paper}>xs</Paper>
         </Grid>
       </Grid>
       <Grid container>
         <Grid item xs>
+          <Paper className={classes.paper}>Chariot Energy</Paper>
+        </Grid>
+        <Grid item xs>
           <Paper className={classes.paper}>xs</Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper className={classes.paper}>xs</Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper className={classes.paper}>xs</Paper>
+        </Grid>
+      </Grid>
+      <Grid container>
+        <Grid item xs>
+          <Paper className={classes.paper}>4Change Energy</Paper>
         </Grid>
         <Grid item xs>
           <Paper className={classes.paper}>test</Paper>
         </Grid>
         <Grid item xs>
           <Paper className={classes.paper}>xs</Paper>
-        </Grid>
-      </Grid>
-      <Grid container>
-        <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
-        </Grid>
-        <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
-        </Grid>
-        <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
-        </Grid>
-      </Grid>
-      <Grid container>
-        <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
-        </Grid>
-        <Grid item xs>
-          <Paper className={classes.paper}>test</Paper>
         </Grid>
         <Grid item xs>
           <Paper className={classes.paper}>xs</Paper>
