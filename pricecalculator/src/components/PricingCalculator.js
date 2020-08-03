@@ -50,7 +50,8 @@ const useStyles = (theme) => ({
     fontSize: '32px',
     display: 'flex',
     justifyContent: 'center',
-    marginTop: '50px'
+    marginTop: '50px',
+    fontWeight: 'bold'
   }
 });
 

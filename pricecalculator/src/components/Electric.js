@@ -21,6 +21,50 @@ export default function AutoGrid() {
     <div className={classes.root}>
       <Grid container>
         <Grid item xs>
+          <Paper className={classes.paper}>Oncor</Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper className={classes.paper}>12</Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper className={classes.paper}>24</Paper>
+        </Grid>
+      </Grid>
+      <Grid container>
+        <Grid item xs>
+          <Paper className={classes.paper}>xs</Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper className={classes.paper}>test</Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper className={classes.paper}>xs</Paper>
+        </Grid>
+      </Grid>
+      <Grid container>
+        <Grid item xs>
+          <Paper className={classes.paper}>xs</Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper className={classes.paper}>xs</Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper className={classes.paper}>xs</Paper>
+        </Grid>
+      </Grid>
+      <Grid container>
+        <Grid item xs>
+          <Paper className={classes.paper}>xs</Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper className={classes.paper}>test</Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper className={classes.paper}>xs</Paper>
+        </Grid>
+      </Grid>
+      <Grid container>
+        <Grid item xs>
           <Paper className={classes.paper}>xs</Paper>
         </Grid>
         <Grid item xs>
