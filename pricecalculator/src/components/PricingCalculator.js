@@ -3,15 +3,10 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem'
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
-// import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/styles';
-import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import NumberFormat from 'react-number-format';
 
 
 const useStyles = (theme) => ({
@@ -34,6 +29,9 @@ const useStyles = (theme) => ({
     width: '100%'
   },
   root: {
+    margin: 'auto',
+    marginTop: '50px',
+    width: '50px',
     minWidth: 275,
   },
   bullet: {
@@ -47,6 +45,13 @@ const useStyles = (theme) => ({
   pos: {
     marginBottom: 12,
   },
+  pageTitle: {
+    margin: 'auto',
+    fontSize: '32px',
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: '50px'
+  }
 });
 
 class PricingCalculator extends React.Component {
@@ -158,7 +163,7 @@ class PricingCalculator extends React.Component {
   getPackage() {
     const packages = this.getPackages()
     return packages.find(aPackage => {
-      return aPackage.name == this.state.selectedPackageId
+      return aPackage.name === this.state.selectedPackageId
     })
   }
 
@@ -175,8 +180,9 @@ class PricingCalculator extends React.Component {
 
     if (products && products.length > 0) {
       const product = this.getProduct(this.state.selectedProductId)
-      return (
+      return (       
         <div className={classes.formWrapper}>
+          <div className={classes.pageTitle}>PRICING CALCULATOR</div>
           <FormControl className={classes.formControl}>
             <div className={classes.fullWidth}>
             <InputLabel id="product-select">Products</InputLabel>
