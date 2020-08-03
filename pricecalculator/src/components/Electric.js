@@ -35,7 +35,7 @@ export default function AutoGrid() {
           <Paper className={classes.paper}>xs</Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
+          <Paper className={classes.paper}>test</Paper>
         </Grid>
         <Grid item xs>
           <Paper className={classes.paper}>xs</Paper>
