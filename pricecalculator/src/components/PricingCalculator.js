@@ -14,10 +14,10 @@ const useStyles = (theme) => ({
     margin: 'auto',
     minWidth: 120,
     display: 'block',
-    width: '75%',
+    width: '50%',
   },
   formControl: {
-    margin: '20px',
+    margin: '10px',
     display: 'block',
     minWidth: 120,
     width: '100%',
