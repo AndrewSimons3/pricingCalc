@@ -61,13 +61,13 @@ export default function AutoGrid() {
           <Paper className={classes.paper}>Tri-Eagle</Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>10.5 2000kwph<br></br>10.8 1000kwph<br></br>11.3 500kwph</Paper>
+          <Paper className={classes.paper}>10.9 2000kwph<br></br>11.2 1000kwph<br></br>11.7 500kwph</Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>10.5 2000kwph<br></br>10.8 1000kwph<br></br>11.3 500kwph</Paper>
+          <Paper className={classes.paper}>10.3 2000kwph<br></br>10.6 1000kwph<br></br>11.1 500kwph</Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>10.5 2000kwph<br></br>10.8 1000kwph<br></br>11.3 500kwph</Paper>
+          <Paper className={classes.paper}>10.3 2000kwph<br></br>10.6 1000kwph<br></br>11.1 500kwph</Paper>
         </Grid>
       </Grid>
       <Grid container>
@@ -75,13 +75,13 @@ export default function AutoGrid() {
           <Paper className={classes.paper}>Discount Power</Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>10.5 2000kwph<br></br>10.8 1000kwph<br></br>11.3 500kwph</Paper>
+          <Paper className={classes.paper}>10.1 2000kwph<br></br>10.3 1000kwph<br></br>10.6 500kwph</Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>10.5 2000kwph<br></br>10.8 1000kwph<br></br>11.3 500kwph</Paper>
+          <Paper className={classes.paper}>9.7 2000kwph<br></br>9.8 1000kwph<br></br>10.2 500kwph</Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>10.5 2000kwph<br></br>10.8 1000kwph<br></br>11.3 500kwph</Paper>
+          <Paper className={classes.paper}>9.5 2000kwph<br></br>9.7 1000kwph<br></br>10 500kwph</Paper>
         </Grid>
       </Grid>
       <Grid container>
@@ -89,13 +89,13 @@ export default function AutoGrid() {
           <Paper className={classes.paper}>Infinite Energy</Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>10.5 2000kwph<br></br>10.8 1000kwph<br></br>11.3 500kwph</Paper>
+          <Paper className={classes.paper}>9.7 2000kwph<br></br>9.9 1000kwph<br></br>12.2 500kwph</Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>10.5 2000kwph<br></br>10.8 1000kwph<br></br>11.3 500kwph</Paper>
+          <Paper className={classes.paper}>9.5 2000kwph<br></br>9.7 1000kwph<br></br>11.9 500kwph</Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>10.5 2000kwph<br></br>10.8 1000kwph<br></br>11.3 500kwph</Paper>
+          <Paper className={classes.paper}>9.4 2000kwph<br></br>9.6 1000kwph<br></br>11.8 500kwph</Paper>
         </Grid>
       </Grid>
       <Grid container>
@@ -103,7 +103,7 @@ export default function AutoGrid() {
           <Paper className={classes.paper}>Chariot Energy</Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>10.5 2000kwph<br></br>10.8 1000kwph<br></br>11.3 500kwph</Paper>
+          <Paper className={classes.paper}>10.9 2000kwph<br></br>10.8 1000kwph<br></br>11.3 500kwph</Paper>
         </Grid>
         <Grid item xs>
           <Paper className={classes.paper}>10.5 2000kwph<br></br>10.8 1000kwph<br></br>11.3 500kwph</Paper>
