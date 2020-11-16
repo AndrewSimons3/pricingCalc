@@ -8,6 +8,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "cors": "^2.8.5",
+    "eslint-plugin-import": "^2.22.1",
     "express": "^4.17.1",
     "firebase-admin": "^9.0.0",
     "material-ui": "^0.20.2",

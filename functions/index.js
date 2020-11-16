@@ -19,8 +19,9 @@ const getAllProducts = (request, response) => {
   db.collection("product").where('isactive', '==', true).get()
   .then((data) => {
     if(data.empty) {
-      return response.json({error: "There is no data"})
+      return response.json({error: "There is no data"});
     }
+
     const products = [] 
     data.forEach(doc => {
       products.push(doc.data())
@@ -32,6 +33,8 @@ const getAllProducts = (request, response) => {
     return response.status(500).json({ error: err});
   });
 }
+
+
 
 app.get('/products', getAllProducts);
 exports.api = functions.https.onRequest(app);
