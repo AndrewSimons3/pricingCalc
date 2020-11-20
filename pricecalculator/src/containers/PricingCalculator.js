@@ -1,16 +1,18 @@
 import { connect } from 'react-redux'
 import PricingCalculator from '../components/PricingCalculator'
-import { fetchProducts } from '../redux/Actions'
+import { fetchProducts, fetchInternets } from '../redux/Actions'
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchProducts: () => dispatch(fetchProducts())
+    fetchProducts: () => dispatch(fetchProducts()),
+    fetchInternets: () => dispatch(fetchInternets())
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    products: state.products
+    products: state.products,
+    internets: state.internets
   };
 }
 

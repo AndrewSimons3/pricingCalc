@@ -9,4 +9,13 @@ const products = (state = [], action) => {
   }
 }
 
-export default combineReducers({products})
+const internets = (state = [], action) => {
+  switch(action.type) {
+    case 'FETCH_INTERNETS':
+      return action.value;
+    default:
+      return state
+  }
+}
+
+export default combineReducers({products, internets})

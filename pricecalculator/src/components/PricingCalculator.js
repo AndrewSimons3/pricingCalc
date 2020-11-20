@@ -65,20 +65,21 @@ class PricingCalculator extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {selectedProductId: "", selectedPackageId: "", selectedEquipmentId: "", selectedNumOfTvs: 1}
+    this.state = {selectedProductId: "", selectedPackageId: "", selectedEquipmentId: "", selectedNumOfTvs: 1, selectedInternetId: ""}
 
 
     this.updateProductSelect = this.updateProductSelect.bind(this)
     this.updatePackageSelect = this.updatePackageSelect.bind(this)
     this.updateEquipmentSelect = this.updateEquipmentSelect.bind(this)
     this.updateNumOfTvsSelect = this.updateNumOfTvsSelect.bind(this)
-
+    this.updateInternetSelect = this.updateInternetSelect.bind(this)
   }
 
   async componentDidMount() {
     const { fetchProducts } = this.props;
     await fetchProducts();
-    console.log(this.props.products);
+    const { fetchInternets } = this.props;
+    await fetchInternets();
   }
 
   updateProductSelect(event) {
@@ -104,11 +105,16 @@ class PricingCalculator extends React.Component {
       selectedProductId: event.target.value, 
       selectedPackageId: packageId,
       selectedEquipmentId: equipmentId,
-      selectedNumOfTvs: numTvs
+      selectedNumOfTvs: numTvs,
     })
     console.log(event.target.value)
 
    
+  }
+
+  updateInternetSelect(event) {
+    const internetId = event.target.value
+    const internet = this.getInternet(internetId)
   }
   
 
@@ -127,6 +133,12 @@ class PricingCalculator extends React.Component {
   getProduct(productId) {
     return this.props.products.find(product => {
       return product.name === productId
+    })
+  }
+
+  getInternet(internetId) {
+    return this.props.internets.find(internet => {
+      return internet.name === internetId
     })
   }
 
@@ -179,7 +191,7 @@ class PricingCalculator extends React.Component {
 
   render() {
 
-    const { products, classes } = this.props;
+    const { products, classes, internets } = this.props;
     const packages = this.getPackages(products)
     const equipment = this.getEquipment(products)
     console.log(packages);
@@ -281,6 +293,22 @@ class PricingCalculator extends React.Component {
                  </CardContent>
                </Card>           
               )}
+              <FormControl className={classes.formControl}>
+                <div className={classes.fullWidth}>
+                <InputLabel id="internet-select">Internet</InputLabel>
+                  <Select className={classes.fullWidth}
+                    labelId="internet"
+                    id="internet-select"
+                    value={this.state.selectedInternetId}
+                    onChange={this.updateInternetSelect}>
+                    {
+                      internets.map((internet, key) => {
+                        return <MenuItem value={internet.name} key={key}>{internet.name}</MenuItem>
+                      })
+                    }
+                  </Select>
+                </div>
+              </FormControl>
       </div>
       );
     }

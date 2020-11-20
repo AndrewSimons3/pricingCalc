@@ -11,3 +11,17 @@ export const fetchProducts = () => {
       })
   }
 }
+
+export const fetchInternets = () => {
+    return (dispatch) => {
+        fetch("https://us-central1-price-calculator-26fca.cloudfunctions.net/api/internets")
+        .then(res => res.json())
+        .then(response => {
+            const action = {
+                type: 'FETCH_INTERNETS',
+                value: response
+            }
+            dispatch(action)
+        })
+    }
+  }
