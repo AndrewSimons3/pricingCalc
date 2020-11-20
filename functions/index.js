@@ -34,7 +34,28 @@ const getAllProducts = (request, response) => {
   });
 }
 
+const getAllInternets = (request, response) => {
+  db.collection("internets").get()
+  .then((data) => {
+    if(data.empty) {
+      return response.json({error: "There is no data"});
+    }
+
+    const internets = [] 
+    data.forEach(doc => {
+      internets.push(doc.data())
+    })
+    return response.json(internets)
+  })
+  .catch((err) => {
+    console.error(err);
+    return response.status(500).json({ error: err});
+  });
+}
 
 
 app.get('/products', getAllProducts);
+app.get('/internets', getAllInternets);
+
 exports.api = functions.https.onRequest(app);
+
