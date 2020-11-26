@@ -86,20 +86,6 @@ export default function AutoGrid() {
       </Grid>
       <Grid container>
         <Grid item xs>
-          <Paper className={classes.paper}>Infinite Energy</Paper>
-        </Grid>
-        <Grid item xs>
-          <Paper className={classes.paper}>9.7 2000kwph<br></br>9.9 1000kwph<br></br>12.2 500kwph</Paper>
-        </Grid>
-        <Grid item xs>
-          <Paper className={classes.paper}>9.5 2000kwph<br></br>9.7 1000kwph<br></br>11.9 500kwph</Paper>
-        </Grid>
-        <Grid item xs>
-          <Paper className={classes.paper}>9.4 2000kwph<br></br>9.6 1000kwph<br></br>11.8 500kwph</Paper>
-        </Grid>
-      </Grid>
-      <Grid container>
-        <Grid item xs>
           <Paper className={classes.paper}>Chariot Energy</Paper>
         </Grid>
         <Grid item xs>
