@@ -40,7 +40,7 @@ export default function AutoGrid() {
 
   return (
     <div className={classes.root}>
-      <div className={classes.pageTitle}>ELECTRIC RATES</div>
+      <div className={classes.pageTitle}>ELECTRIC</div>
       <br></br>
       <Grid className={classes.oncorHeader}>
         <Grid item xs>
