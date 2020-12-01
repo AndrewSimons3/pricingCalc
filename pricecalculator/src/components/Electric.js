@@ -140,7 +140,7 @@ export default function AutoGrid() {
           <Paper className={classes.paper}>10.5 2000kwph<br></br>10.8 1000kwph<br></br>11.3 500kwph</Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>10.5fdsafdsafdsfd 2000kwph<br></br>10.8 1000kwph<br></br>11.3 500kwph</Paper>
+          <Paper className={classes.paper}>10.5 2000kwph<br></br>10.8 1000kwph<br></br>11.3 500kwph</Paper>
         </Grid>
       </Grid>
       <Grid container>
