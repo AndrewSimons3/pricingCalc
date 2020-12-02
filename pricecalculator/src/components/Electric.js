@@ -78,7 +78,7 @@ export default function AutoGrid() {
           <Paper className={classes.paper}>10.1 2000kwph<br></br>10.3 1000kwph<br></br>10.6 500kwph</Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>9.7 2000kwph<br></br>9.8 1000kwph<br></br>10.2 500kwph</Paper>
+          <Paper className={classes.paper}>9.8 2000kwph<br></br>9.8 1000kwph<br></br>10.2 500kwph</Paper>
         </Grid>
         <Grid item xs>
           <Paper className={classes.paper}>9.5 2000kwph<br></br>9.7 1000kwph<br></br>10 500kwph</Paper>
