@@ -117,6 +117,15 @@ class PricingCalculator extends React.Component {
     const internetId = event.target.value
     const internet = this.getInternet(internetId)
     const intSpeeds = internet.intSpeeds
+    var speedId = undefined
+
+    if(intSpeeds) {
+      speedId = intSpeeds[0].speed
+    }
+
+    this.setState({
+      selectedSpeedId: speedId
+    })
   }
   
 
@@ -130,6 +139,10 @@ class PricingCalculator extends React.Component {
 
   updateNumOfTvsSelect(event) {
     this.setState({selectedNumOfTvs: event.target.value})
+  }
+
+  updateSpeedSelect(event) {
+    this.setState({selectedSpeedId: event.target.value})
   }
 
   getProduct(productId) {
@@ -150,6 +163,14 @@ class PricingCalculator extends React.Component {
     }
     const product = this.getProduct(this.state.selectedProductId)
     return product.packages
+  }
+
+  getIntSpeeds() {
+    if (!this.state.selectedInternetId) {
+      return null
+    }
+    const internet = this.getInternet(this.state.selectedSpeedId)
+    return internet.intSpeeds
   }
 
   getEquipment() {
@@ -191,11 +212,14 @@ class PricingCalculator extends React.Component {
     return product.extratvcost.indexOf(this.state.selectedNumOfTvs) + 1
   }
 
+ 
+
   render() {
 
     const { products, classes, internets } = this.props;
     const packages = this.getPackages(products)
     const equipment = this.getEquipment(products)
+    const intSpeeds = this.getIntSpeeds(internets)
     console.log(packages);
 
     if (products && products.length > 0) {
@@ -311,7 +335,7 @@ class PricingCalculator extends React.Component {
                   </Select>
                 </div>
               </FormControl>
-              {this.state.selectedSpeedId && (
+              {this.state.selectedInternetId && (
               <FormControl className={classes.formControl}>
                 <div className={classes.fullWidth}>
                   <InputLabel id="speed-select">Speed</InputLabel>
@@ -321,7 +345,7 @@ class PricingCalculator extends React.Component {
                     value={this.state.selectedSpeedId}
                     onChange={this.updateSpeedSelect}>
                     {
-                      speed.map((speed, key) => {
+                      intSpeeds.map((speed, key) => {
                         return <MenuItem value={speed.name} key={key}>{speed.name}</MenuItem>
                       })
                     }
