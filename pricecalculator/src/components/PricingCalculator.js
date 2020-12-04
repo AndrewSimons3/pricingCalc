@@ -115,8 +115,8 @@ class PricingCalculator extends React.Component {
 
   updateInternetSelect(event) {
     const internetId = event.target.value
-    const internet = this.getInternet(internetId)
-    const intSpeeds = internet.intSpeeds
+    const internets = this.getInternet(internetId)
+    const intSpeeds = internets.intSpeeds
     var speedId = undefined
 
     if(intSpeeds) {
@@ -169,8 +169,8 @@ class PricingCalculator extends React.Component {
     if (!this.state.selectedInternetId) {
       return null
     }
-    const internet = this.getInternet(this.state.selectedSpeedId)
-    return internet.intSpeeds
+    const internets = this.getInternet(this.state.selectedSpeedId)
+    return internets.intSpeeds
   }
 
   getEquipment() {
@@ -205,6 +205,13 @@ class PricingCalculator extends React.Component {
     const packages = this.getPackages()
     return packages.find(aPackage => {
       return aPackage.name === this.state.selectedPackageId
+    })
+  }
+
+  getIntSpeed() {
+    const intSpeeds = this.getIntSpeeds()
+    return intSpeeds.find(intSpeed => {
+      return intSpeed.speed === this.state.selectedSpeedId
     })
   }
 
