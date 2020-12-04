@@ -345,8 +345,8 @@ class PricingCalculator extends React.Component {
                     value={this.state.selectedSpeedId}
                     onChange={this.updateSpeedSelect}>
                     {
-                      intSpeeds.map((speed, key) => {
-                        return <MenuItem value={speed.name} key={key}>{speed.name}</MenuItem>
+                      intSpeeds.map((speeds, key) => {
+                        return <MenuItem value={speeds.speed} key={key}>{speeds.speed}</MenuItem>
                       })
                     }
                   </Select>
