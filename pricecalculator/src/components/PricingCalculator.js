@@ -203,7 +203,7 @@ class PricingCalculator extends React.Component {
           <div className={classes.pageTitle}>PRICING CALCULATOR</div>
           <FormControl className={classes.formControl}>
             <div className={classes.fullWidth}>
-            <InputLabel id="product-select">TV's</InputLabel>
+            <InputLabel id="product-select">TV</InputLabel>
               <Select className={classes.fullWidth}
                 labelId="products"
                 id="product-select"
