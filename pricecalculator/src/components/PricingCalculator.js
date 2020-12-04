@@ -65,7 +65,7 @@ class PricingCalculator extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {selectedProductId: "", selectedPackageId: "", selectedEquipmentId: "", selectedNumOfTvs: 1, selectedInternetId: ""}
+    this.state = {selectedProductId: "", selectedPackageId: "", selectedEquipmentId: "", selectedNumOfTvs: 1, selectedInternetId: "", selectedSpeedId: ""}
 
 
     this.updateProductSelect = this.updateProductSelect.bind(this)
@@ -73,6 +73,7 @@ class PricingCalculator extends React.Component {
     this.updateEquipmentSelect = this.updateEquipmentSelect.bind(this)
     this.updateNumOfTvsSelect = this.updateNumOfTvsSelect.bind(this)
     this.updateInternetSelect = this.updateInternetSelect.bind(this)
+    this.updateSpeedSelect = this.updateSpeedSelect.bind(this)
   }
 
   async componentDidMount() {
@@ -115,6 +116,7 @@ class PricingCalculator extends React.Component {
   updateInternetSelect(event) {
     const internetId = event.target.value
     const internet = this.getInternet(internetId)
+    const intSpeeds = internet.intSpeeds
   }
   
 
@@ -309,6 +311,24 @@ class PricingCalculator extends React.Component {
                   </Select>
                 </div>
               </FormControl>
+              {this.state.selectedSpeedId && (
+              <FormControl className={classes.formControl}>
+                <div className={classes.fullWidth}>
+                  <InputLabel id="speed-select">Speed</InputLabel>
+                  <Select className={classes.fullWidth}
+                    labelId="speed"
+                    id="speed-select"
+                    value={this.state.selectedSpeedId}
+                    onChange={this.updateSpeedSelect}>
+                    {
+                      speed.map((speed, key) => {
+                        return <MenuItem value={speed.name} key={key}>{speed.name}</MenuItem>
+                      })
+                    }
+                  </Select>
+                </div>
+              </FormControl>
+            )}
       </div>
       );
     }
