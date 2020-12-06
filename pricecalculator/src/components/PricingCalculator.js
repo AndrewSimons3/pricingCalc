@@ -109,8 +109,6 @@ class PricingCalculator extends React.Component {
       selectedNumOfTvs: numTvs,
     })
     console.log(event.target.value)
-
-   
   }
 
   updateInternetSelect(event) {
