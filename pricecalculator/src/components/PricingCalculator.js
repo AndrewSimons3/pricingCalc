@@ -112,9 +112,11 @@ class PricingCalculator extends React.Component {
   }
 
   updateInternetSelect(event) {
+    console.log(event.target.value)
     const internetId = event.target.value
     const internets = this.getInternet(internetId)
     const intSpeeds = internets.intSpeeds
+    console.log(intSpeeds)
     var speedId = undefined
 
     if(intSpeeds) {
@@ -122,7 +124,7 @@ class PricingCalculator extends React.Component {
     }
 
     this.setState({
-      selectedSpeedId: speedId
+      selectedInternetId: internetId
     })
   }
   
@@ -167,7 +169,7 @@ class PricingCalculator extends React.Component {
     if (!this.state.selectedInternetId) {
       return null
     }
-    const internets = this.getInternet(this.state.selectedSpeedId)
+    const internets = this.getInternet(this.state.selectedInternetId)
     return internets.intSpeeds
   }
 
@@ -225,6 +227,13 @@ class PricingCalculator extends React.Component {
     const packages = this.getPackages(products)
     const equipment = this.getEquipment(products)
     const intSpeeds = this.getIntSpeeds(internets)
+    var speedWithPrice = null
+    
+    if (this.state.selectedSpeedId) {
+      speedWithPrice = intSpeeds.find( (speedWithPrice) => {
+        return speedWithPrice.speed == this.state.selectedSpeedId
+      })
+    }
     console.log(packages);
 
     if (products && products.length > 0) {
@@ -290,7 +299,7 @@ class PricingCalculator extends React.Component {
                   <div className={classes.fullWidth}>
                     <InputLabel id="tvs-select">Number of Tvs</InputLabel>
                       <Select className={classes.fullWidth}
-                        labelId="tvs"
+                        labelId="tvs-select"
                         id="tvs-select"
                         value={this.state.selectedNumOfTvs}
                         onChange={this.updateNumOfTvsSelect}>
@@ -328,7 +337,7 @@ class PricingCalculator extends React.Component {
                 <div className={classes.fullWidth}>
                 <InputLabel id="internet-select">Internet</InputLabel>
                   <Select className={classes.fullWidth}
-                    labelId="internet"
+                    labelId="internet-select"
                     id="internet-select"
                     value={this.state.selectedInternetId}
                     onChange={this.updateInternetSelect}>
@@ -358,6 +367,28 @@ class PricingCalculator extends React.Component {
                 </div>
               </FormControl>
             )}
+            {this.state.selectedSpeedId && (
+                 <Card className={classes.root}>
+                 <CardContent>
+                 {/* <Typography className={classes.title} color="textSecondary" gutterBottom>
+                     Upfront Cost
+                   </Typography>
+                   <Typography className={classes.price} variant="h5" component="h2">
+                     {this.getCurrency(this.getUpFrontCost(product))}
+                   </Typography>
+                   <Typography className={classes.title} color="textSecondary" gutterBottom>
+                     Total Monthly Cost
+                   </Typography>
+                   <Typography className={classes.price} variant="h5" component="h2">
+                     {this.getCurrency(this.getTotalMonthlyCost())}
+                   </Typography> */}
+                   <Typography variant="body2" component="p">
+                     {this.getCurrency(speedWithPrice.intPrice)}
+                    
+                   </Typography>
+                 </CardContent>
+               </Card>           
+              )}
       </div>
       );
     }
