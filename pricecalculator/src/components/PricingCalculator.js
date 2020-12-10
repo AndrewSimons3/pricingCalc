@@ -383,7 +383,7 @@ class PricingCalculator extends React.Component {
                      {this.getCurrency(this.getTotalMonthlyCost())}
                    </Typography> */}
                    <Typography className={classes.title} color="textSecondary" gutterBottom>
-                     Total Monthly Cost
+                     Total Monthly Cost!!!
                    </Typography>
                    <Typography variant="body2" component="p">
                      {this.getCurrency(speedWithPrice.intPrice)}
