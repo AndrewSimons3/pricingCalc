@@ -383,6 +383,9 @@ class PricingCalculator extends React.Component {
                    <Typography className={classes.title} color="textSecondary" gutterBottom>
                      Installation Cost
                    </Typography>
+                   <Typography variant="body2" component="p">
+                   {this.getCurrency(speedWithPrice.install)}
+                   </Typography>
                    <Typography className={classes.title} color="textSecondary" gutterBottom>
                      Total Monthly Cost
                    </Typography>
