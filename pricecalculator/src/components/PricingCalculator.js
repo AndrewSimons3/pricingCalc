@@ -388,7 +388,6 @@ class PricingCalculator extends React.Component {
                    </Typography>
                    <Typography variant="body2" component="p">
                      {this.getCurrency(speedWithPrice.intPrice)}
-                    
                    </Typography>
                  </CardContent>
                </Card>           
