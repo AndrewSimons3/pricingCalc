@@ -120,13 +120,19 @@ class PricingCalculator extends React.Component {
     const intEquipment = internets.equipment
     console.log(intSpeeds)
     var speedId = undefined
+    var intEquipmentId = undefined
 
     if(intSpeeds) {
       speedId = intSpeeds[0].speed
     }
 
+    if(intEquipment) {
+      intEquipmentId = intEquipment[0].name
+    }
+
     this.setState({
-      selectedInternetId: internetId
+      selectedInternetId: internetId,
+      selectedIntEquipmentId: intEquipmentId,
     })
   }
   
@@ -145,6 +151,10 @@ class PricingCalculator extends React.Component {
 
   updateSpeedSelect(event) {
     this.setState({selectedSpeedId: event.target.value})
+  }
+
+  updateIntEquipmentSelect(event) {
+    this.setState({selectedIntEquipmentId: event.target.value})
   }
 
   getProduct(productId) {
@@ -217,6 +227,14 @@ class PricingCalculator extends React.Component {
     })
   }
 
+  getIntEquipment() {
+    if (!this.state.selectedInternetId) {
+      return null
+    }
+    const internets = this.getInternet(this.state.selectedInternetId)
+    return internets.equipment
+  }
+
   getNumTvs(product) {
     return product.extratvcost.indexOf(this.state.selectedNumOfTvs) + 1
   }
@@ -229,6 +247,7 @@ class PricingCalculator extends React.Component {
     const packages = this.getPackages(products)
     const equipment = this.getEquipment(products)
     const intSpeeds = this.getIntSpeeds(internets)
+    const intEquipment = this.getIntEquipment(internets)
     var speedWithPrice = null
     
     if (this.state.selectedSpeedId) {
@@ -351,6 +370,7 @@ class PricingCalculator extends React.Component {
                   </Select>
                 </div>
               </FormControl>
+
               {this.state.selectedInternetId && (
               <FormControl className={classes.formControl}>
                 <div className={classes.fullWidth}>
@@ -369,6 +389,26 @@ class PricingCalculator extends React.Component {
                 </div>
               </FormControl>
             )}
+
+            {this.state.selectedSpeedId && (
+              <FormControl className={classes.formControl}>
+                <div className={classes.fullWidth}>
+                 <InputLabel id="equipment-select">Internet Equipment</InputLabel>
+                 <Select className={classes.fullWidth}
+                    labelId="equipment"
+                    id="equipment-select"
+                    value={this.state.selectedIntEquipmentId}
+                    onChange={this.updateIntEquipmentSelect}>
+                    {
+                      intEquipment.map((equipment, key) => {
+                        return <MenuItem value={equipment.name} key={key}>{equipment.name}</MenuItem>
+                      })
+                    }
+                  </Select>
+              </div>
+            </FormControl>
+            )}
+            
             {this.state.selectedSpeedId && (
                  <Card className={classes.root}>
                  <CardContent>
