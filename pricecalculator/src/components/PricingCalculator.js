@@ -65,7 +65,7 @@ class PricingCalculator extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {selectedProductId: "", selectedPackageId: "", selectedEquipmentId: "", selectedNumOfTvs: 1, selectedInternetId: "", selectedSpeedId: ""}
+    this.state = {selectedProductId: "", selectedPackageId: "", selectedEquipmentId: "", selectedNumOfTvs: 1, selectedInternetId: "", selectedSpeedId: "", selectedintEquipmentId: ""}
 
 
     this.updateProductSelect = this.updateProductSelect.bind(this)
@@ -74,6 +74,7 @@ class PricingCalculator extends React.Component {
     this.updateNumOfTvsSelect = this.updateNumOfTvsSelect.bind(this)
     this.updateInternetSelect = this.updateInternetSelect.bind(this)
     this.updateSpeedSelect = this.updateSpeedSelect.bind(this)
+    this.updateIntEquipmentSelect = this.updateIntEquipmentSelect.bind(this)
   }
 
   async componentDidMount() {
@@ -116,6 +117,7 @@ class PricingCalculator extends React.Component {
     const internetId = event.target.value
     const internets = this.getInternet(internetId)
     const intSpeeds = internets.intSpeeds
+    const intEquipment = internets.equipment
     console.log(intSpeeds)
     var speedId = undefined
 
