@@ -411,29 +411,26 @@ class PricingCalculator extends React.Component {
             </FormControl>
             )}
             
-            {this.state.selectedSpeedId && (
-                 <Card className={classes.root}>
-                 <CardContent>
-                 {/*
-                   
-                   <Typography className={classes.price} variant="h5" component="h2">
-                     {this.getCurrency(this.getTotalMonthlyCost())}
-                   </Typography> */}
-                   <Typography className={classes.title} color="textSecondary" gutterBottom>
-                     Installation Cost
-                   </Typography>
-                   <Typography className={classes.price} variant="h5" component="h2">
-                   {this.getCurrency(speedWithPrice.install)}
-                   </Typography>
-                   <Typography className={classes.title} color="textSecondary" gutterBottom>
-                     Total Monthly Cost
-                   </Typography>
-                   <Typography className={classes.price} variant="h5" component="h2">
-                     {this.getCurrency(speedWithPrice.intPrice)}
-                   </Typography>
-                 </CardContent>
-               </Card>           
+            <div className="internetCard">
+              {this.state.selectedSpeedId && (
+                <Card className={classes.root}>
+                  <CardContent>
+                    <Typography className={classes.title} color="textSecondary" gutterBottom>
+                      Installation Cost
+                    </Typography>
+                    <Typography className={classes.price} variant="h5" component="h2">
+                    {this.getCurrency(speedWithPrice.install)}
+                    </Typography>
+                    <Typography className={classes.title} color="textSecondary" gutterBottom>
+                      Total Monthly Cost
+                    </Typography>
+                    <Typography className={classes.price} variant="h5" component="h2">
+                      {this.getCurrency(speedWithPrice.intPrice)}
+                    </Typography>
+                  </CardContent>
+                </Card>           
               )}
+            </div>
       </div>
       );
     }
