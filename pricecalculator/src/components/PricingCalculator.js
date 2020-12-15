@@ -335,23 +335,23 @@ class PricingCalculator extends React.Component {
               )}
               {this.state.selectedProductId && (
                  <Card className={classes.root}>
-                 <CardContent>
-                 <Typography className={classes.title} color="textSecondary" gutterBottom>
-                     Upfront Cost
-                   </Typography>
-                   <Typography className={classes.price} variant="h5" component="h2">
-                     {this.getCurrency(this.getUpFrontCost(product))}
-                   </Typography>
-                   <Typography className={classes.title} color="textSecondary" gutterBottom>
-                     Total Monthly Cost
-                   </Typography>
-                   <Typography className={classes.price} variant="h5" component="h2">
-                     {this.getCurrency(this.getTotalMonthlyCost())}
-                   </Typography>
-                   <Typography variant="body2" component="p">
-                     {product.name} {this.getPackage().name} package with {this.getNumTvs(product)} TV(s)
-                   </Typography>
-                 </CardContent>
+                  <CardContent>
+                    <Typography className={classes.title} color="textSecondary" gutterBottom>
+                      Upfront Cost
+                    </Typography>
+                    <Typography className={classes.price} variant="h5" component="h2">
+                      {this.getCurrency(this.getUpFrontCost(product))}
+                    </Typography>
+                    <Typography className={classes.title} color="textSecondary" gutterBottom>
+                      Total Monthly Cost
+                    </Typography>
+                    <Typography className={classes.price} variant="h5" component="h2">
+                      {this.getCurrency(this.getTotalMonthlyCost())}
+                    </Typography>
+                    <Typography variant="body2" component="p">
+                      {product.name} {this.getPackage().name} package with {this.getNumTvs(product)} TV(s)
+                    </Typography>
+                  </CardContent>
                </Card>           
               )}
               <FormControl className={classes.formControl}>
