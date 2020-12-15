@@ -7,6 +7,8 @@ import { withStyles } from '@material-ui/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import { flexbox } from '@material-ui/system';
+import Box from '@material-ui/core/Box';
 
 
 const useStyles = (theme) => ({
@@ -14,13 +16,11 @@ const useStyles = (theme) => ({
     margin: 'auto',
     minWidth: 120,
     display: 'block',
-    width: '50%',
   },
   formControl: {
     margin: '10px',
     display: 'block',
     minWidth: 120,
-    width: '100%',
   },
   selectEmpty: {
     marginTop: 'auto',
@@ -29,8 +29,6 @@ const useStyles = (theme) => ({
     width: '100%'
   },
   root: {
-    margin: 'auto',
-    marginTop: '50px',
     width: '50px',
     minWidth: 275,
   },
@@ -57,6 +55,15 @@ const useStyles = (theme) => ({
     justifyContent: 'center',
     marginTop: '50px',
     fontWeight: 'bold'
+  },
+  main: {
+    display: 'flex',
+  },
+  sub: {
+    width: '50%'
+  },
+  card: {
+    margin: 'auto'
   }
 });
 
@@ -262,98 +269,104 @@ class PricingCalculator extends React.Component {
       return (       
         <div className={classes.formWrapper}>
           <div className={classes.pageTitle}>PRICING CALCULATOR</div>
-          <FormControl className={classes.formControl}>
-            <div className={classes.fullWidth}>
-            <InputLabel id="product-select">TV</InputLabel>
-              <Select className={classes.fullWidth}
-                labelId="products"
-                id="product-select"
-                value={this.state.selectedProductId}
-                onChange={this.updateProductSelect}>
-                {
-                  products.map((product, key) => {
-                    console.log(product.id)
-                    return <MenuItem value={product.name} key={key}>{product.name}</MenuItem>
-                  })
-                }
-              </Select>
-            </div>
-          </FormControl>
-            {this.state.selectedProductId && (
+            <Box className={classes.main}>
+              <Box className={classes.sub}>
               <FormControl className={classes.formControl}>
                 <div className={classes.fullWidth}>
-                  <InputLabel id="package-select">Packages</InputLabel>
+                <InputLabel id="product-select">TV</InputLabel>
                   <Select className={classes.fullWidth}
-                    labelId="packages"
-                    id="package-select"
-                    value={this.state.selectedPackageId}
-                    onChange={this.updatePackageSelect}>
+                    labelId="products"
+                    id="product-select"
+                    value={this.state.selectedProductId}
+                    onChange={this.updateProductSelect}>
                     {
-                      packages.map((aPackage, key) => {
-                        return <MenuItem value={aPackage.name} key={key}>{aPackage.name}</MenuItem>
+                      products.map((product, key) => {
+                        console.log(product.id)
+                        return <MenuItem value={product.name} key={key}>{product.name}</MenuItem>
                       })
                     }
                   </Select>
                 </div>
               </FormControl>
-            )}
-            {this.state.selectedProductId && (
-              <FormControl className={classes.formControl}>
-                <div className={classes.fullWidth}>
-                 <InputLabel id="equipment-select">Equipment</InputLabel>
-                 <Select className={classes.fullWidth}
-                    labelId="equipment"
-                    id="equipment-select"
-                    value={this.state.selectedEquipmentId}
-                    onChange={this.updateEquipmentSelect}>
-                    {
-                      equipment.map((equipment, key) => {
-                        return <MenuItem value={equipment.name} key={key}>{equipment.name}</MenuItem>
-                      })
-                    }
-                  </Select>
-              </div>
-            </FormControl>
-            )}
-              {this.state.selectedProductId && (
-                <FormControl className={classes.formControl}>
-                  <div className={classes.fullWidth}>
-                    <InputLabel id="tvs-select">Number of Tvs</InputLabel>
+                {this.state.selectedProductId && (
+                  <FormControl className={classes.formControl}>
+                    <div className={classes.fullWidth}>
+                      <InputLabel id="package-select">Packages</InputLabel>
                       <Select className={classes.fullWidth}
-                        labelId="tvs-select"
-                        id="tvs-select"
-                        value={this.state.selectedNumOfTvs}
-                        onChange={this.updateNumOfTvsSelect}>
+                        labelId="packages"
+                        id="package-select"
+                        value={this.state.selectedPackageId}
+                        onChange={this.updatePackageSelect}>
                         {
-                          product.extratvcost.map((tvCost, key) => {
-                            return <MenuItem value={tvCost} key={key}>{key + 1}</MenuItem>
+                          packages.map((aPackage, key) => {
+                            return <MenuItem value={aPackage.name} key={key}>{aPackage.name}</MenuItem>
+                          })
+                        }
+                      </Select>
+                    </div>
+                  </FormControl>
+                )}
+                {this.state.selectedProductId && (
+                  <FormControl className={classes.formControl}>
+                    <div className={classes.fullWidth}>
+                    <InputLabel id="equipment-select">Equipment</InputLabel>
+                    <Select className={classes.fullWidth}
+                        labelId="equipment"
+                        id="equipment-select"
+                        value={this.state.selectedEquipmentId}
+                        onChange={this.updateEquipmentSelect}>
+                        {
+                          equipment.map((equipment, key) => {
+                            return <MenuItem value={equipment.name} key={key}>{equipment.name}</MenuItem>
                           })
                         }
                       </Select>
                   </div>
                 </FormControl>
-              )}
-              {this.state.selectedProductId && (
-                 <Card className={classes.root}>
-                  <CardContent>
-                    <Typography className={classes.title} color="textSecondary" gutterBottom>
-                      Upfront Cost
-                    </Typography>
-                    <Typography className={classes.price} variant="h5" component="h2">
-                      {this.getCurrency(this.getUpFrontCost(product))}
-                    </Typography>
-                    <Typography className={classes.title} color="textSecondary" gutterBottom>
-                      Total Monthly Cost
-                    </Typography>
-                    <Typography className={classes.price} variant="h5" component="h2">
-                      {this.getCurrency(this.getTotalMonthlyCost())}
-                    </Typography>
-                    <Typography variant="body2" component="p">
-                      {product.name} {this.getPackage().name} package with {this.getNumTvs(product)} TV(s)
-                    </Typography>
-                  </CardContent>
-               </Card>           
-              )}
+                )}
+                  {this.state.selectedProductId && (
+                    <FormControl className={classes.formControl}>
+                      <div className={classes.fullWidth}>
+                        <InputLabel id="tvs-select">Number of Tvs</InputLabel>
+                          <Select className={classes.fullWidth}
+                            labelId="tvs-select"
+                            id="tvs-select"
+                            value={this.state.selectedNumOfTvs}
+                            onChange={this.updateNumOfTvsSelect}>
+                            {
+                              product.extratvcost.map((tvCost, key) => {
+                                return <MenuItem value={tvCost} key={key}>{key + 1}</MenuItem>
+                              })
+                            }
+                          </Select>
+                      </div>
+                    </FormControl>
+                  )}
+                  </Box>
+                  <Box className={classes.card}>
+                  {this.state.selectedProductId && (
+                    <Card className={classes.root}>
+                      <CardContent>
+                        <Typography className={classes.title} color="textSecondary" gutterBottom>
+                          Upfront Cost
+                        </Typography>
+                        <Typography className={classes.price} variant="h5" component="h2">
+                          {this.getCurrency(this.getUpFrontCost(product))}
+                        </Typography>
+                        <Typography className={classes.title} color="textSecondary" gutterBottom>
+                          Total Monthly Cost
+                        </Typography>
+                        <Typography className={classes.price} variant="h5" component="h2">
+                          {this.getCurrency(this.getTotalMonthlyCost())}
+                        </Typography>
+                        <Typography variant="body2" component="p">
+                          {product.name} {this.getPackage().name} package with {this.getNumTvs(product)} TV(s)
+                        </Typography>
+                      </CardContent>
+                  </Card>           
+                  )}
+                  </Box>
+                </Box>
               <FormControl className={classes.formControl}>
                 <div className={classes.fullWidth}>
                 <InputLabel id="internet-select">Internet</InputLabel>
