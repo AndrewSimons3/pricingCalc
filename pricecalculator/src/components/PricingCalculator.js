@@ -11,12 +11,10 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = (theme) => ({
   formWrapper: {
-  // display: 'flex',
-  // justifyContent: 'flex-start',
-  margin: 'auto',
-  minWidth: 120,
-  display: 'block',
-  width: '50%',
+    margin: 'auto',
+    minWidth: 120,
+    display: 'block',
+    width: '50%',
   },
   formControl: {
     margin: '10px',
