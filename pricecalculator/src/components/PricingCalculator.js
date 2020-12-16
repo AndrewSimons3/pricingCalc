@@ -268,7 +268,7 @@ class PricingCalculator extends React.Component {
       const product = this.getProduct(this.state.selectedProductId)
       return (       
         <div className={classes.formWrapper}>
-          <div className={classes.pageTitle}>PRICING CALCULATOR</div>
+          <div className={classes.pageTitle}>PRICING CALCULATOR  </div>
             <Box className={classes.main}>
               <Box className={classes.sub}>
               <FormControl className={classes.formControl}>
