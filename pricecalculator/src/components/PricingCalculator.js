@@ -291,7 +291,7 @@ class PricingCalculator extends React.Component {
                 {this.state.selectedProductId && (
                   <FormControl className={classes.formControl}>
                     <div className={classes.fullWidth}>
-                      <InputLabel id="package-select">Packages</InputLabel>
+                      <InputLabel id="package-select">Packagesdsa</InputLabel>
                       <Select className={classes.fullWidth}
                         labelId="packages"
                         id="package-select"
