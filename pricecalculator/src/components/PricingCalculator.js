@@ -58,6 +58,7 @@ const useStyles = (theme) => ({
   },
   main: {
     display: 'flex',
+    margin: '5%'
   },
   sub: {
     width: '50%'
