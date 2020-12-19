@@ -272,118 +272,121 @@ class PricingCalculator extends React.Component {
           <div className={classes.pageTitle}>PRICING CALCULATOR</div>
             <Box className={classes.main}>
               <Box className={classes.sub}>
-              <FormControl className={classes.formControl}>
-                <div className={classes.fullWidth}>
-                <InputLabel id="product-select">TV</InputLabel>
-                  <Select className={classes.fullWidth}
-                    labelId="products"
-                    id="product-select"
-                    value={this.state.selectedProductId}
-                    onChange={this.updateProductSelect}>
-                    {
-                      products.map((product, key) => {
-                        console.log(product.id)
-                        return <MenuItem value={product.name} key={key}>{product.name}</MenuItem>
-                      })
-                    }
-                  </Select>
-                </div>
-              </FormControl>
-                {this.state.selectedProductId && (
-                  <FormControl className={classes.formControl}>
-                    <div className={classes.fullWidth}>
-                      <InputLabel id="package-select">Packages</InputLabel>
-                      <Select className={classes.fullWidth}
-                        labelId="packages"
-                        id="package-select"
-                        value={this.state.selectedPackageId}
-                        onChange={this.updatePackageSelect}>
-                        {
-                          packages.map((aPackage, key) => {
-                            return <MenuItem value={aPackage.name} key={key}>{aPackage.name}</MenuItem>
-                          })
-                        }
-                      </Select>
-                    </div>
-                  </FormControl>
-                )}
-                {this.state.selectedProductId && (
-                  <FormControl className={classes.formControl}>
-                    <div className={classes.fullWidth}>
-                    <InputLabel id="equipment-select">Equipment</InputLabel>
+                <FormControl className={classes.formControl}>
+                  <div className={classes.fullWidth}>
+                  <InputLabel id="product-select">TV</InputLabel>
                     <Select className={classes.fullWidth}
-                        labelId="equipment"
-                        id="equipment-select"
-                        value={this.state.selectedEquipmentId}
-                        onChange={this.updateEquipmentSelect}>
-                        {
-                          equipment.map((equipment, key) => {
-                            return <MenuItem value={equipment.name} key={key}>{equipment.name}</MenuItem>
-                          })
-                        }
-                      </Select>
+                      labelId="products"
+                      id="product-select"
+                      value={this.state.selectedProductId}
+                      onChange={this.updateProductSelect}>
+                      {
+                        products.map((product, key) => {
+                          console.log(product.id)
+                          return <MenuItem value={product.name} key={key}>{product.name}</MenuItem>
+                        })
+                      }
+                    </Select>
                   </div>
                 </FormControl>
-                )}
                   {this.state.selectedProductId && (
                     <FormControl className={classes.formControl}>
                       <div className={classes.fullWidth}>
-                        <InputLabel id="tvs-select">Number of Tvs</InputLabel>
-                          <Select className={classes.fullWidth}
-                            labelId="tvs-select"
-                            id="tvs-select"
-                            value={this.state.selectedNumOfTvs}
-                            onChange={this.updateNumOfTvsSelect}>
-                            {
-                              product.extratvcost.map((tvCost, key) => {
-                                return <MenuItem value={tvCost} key={key}>{key + 1}</MenuItem>
-                              })
-                            }
-                          </Select>
+                        <InputLabel id="package-select">Packages</InputLabel>
+                        <Select className={classes.fullWidth}
+                          labelId="packages"
+                          id="package-select"
+                          value={this.state.selectedPackageId}
+                          onChange={this.updatePackageSelect}>
+                          {
+                            packages.map((aPackage, key) => {
+                              return <MenuItem value={aPackage.name} key={key}>{aPackage.name}</MenuItem>
+                            })
+                          }
+                        </Select>
                       </div>
                     </FormControl>
                   )}
-                  </Box>
-                  <Box className={classes.card}>
                   {this.state.selectedProductId && (
-                    <Card className={classes.root}>
-                      <CardContent>
-                        <Typography className={classes.title} color="textSecondary" gutterBottom>
-                          Upfront Cost
-                        </Typography>
-                        <Typography className={classes.price} variant="h5" component="h2">
-                          {this.getCurrency(this.getUpFrontCost(product))}
-                        </Typography>
-                        <Typography className={classes.title} color="textSecondary" gutterBottom>
-                          Total Monthly Cost
-                        </Typography>
-                        <Typography className={classes.price} variant="h5" component="h2">
-                          {this.getCurrency(this.getTotalMonthlyCost())}
-                        </Typography>
-                        <Typography variant="body2" component="p">
-                          {product.name} {this.getPackage().name} package with {this.getNumTvs(product)} TV(s)
-                        </Typography>
-                      </CardContent>
-                  </Card>           
+                    <FormControl className={classes.formControl}>
+                      <div className={classes.fullWidth}>
+                      <InputLabel id="equipment-select">Equipment</InputLabel>
+                      <Select className={classes.fullWidth}
+                          labelId="equipment"
+                          id="equipment-select"
+                          value={this.state.selectedEquipmentId}
+                          onChange={this.updateEquipmentSelect}>
+                          {
+                            equipment.map((equipment, key) => {
+                              return <MenuItem value={equipment.name} key={key}>{equipment.name}</MenuItem>
+                            })
+                          }
+                        </Select>
+                    </div>
+                  </FormControl>
                   )}
+                    {this.state.selectedProductId && (
+                      <FormControl className={classes.formControl}>
+                        <div className={classes.fullWidth}>
+                          <InputLabel id="tvs-select">Number of Tvs</InputLabel>
+                            <Select className={classes.fullWidth}
+                              labelId="tvs-select"
+                              id="tvs-select"
+                              value={this.state.selectedNumOfTvs}
+                              onChange={this.updateNumOfTvsSelect}>
+                              {
+                                product.extratvcost.map((tvCost, key) => {
+                                  return <MenuItem value={tvCost} key={key}>{key + 1}</MenuItem>
+                                })
+                              }
+                            </Select>
+                        </div>
+                      </FormControl>
+                    )}
+                    </Box>
+                    <Box className={classes.card}>
+                    {this.state.selectedProductId && (
+                      <Card className={classes.root}>
+                        <CardContent>
+                          <Typography className={classes.title} color="textSecondary" gutterBottom>
+                            Upfront Cost
+                          </Typography>
+                          <Typography className={classes.price} variant="h5" component="h2">
+                            {this.getCurrency(this.getUpFrontCost(product))}
+                          </Typography>
+                          <Typography className={classes.title} color="textSecondary" gutterBottom>
+                            Total Monthly Cost
+                          </Typography>
+                          <Typography className={classes.price} variant="h5" component="h2">
+                            {this.getCurrency(this.getTotalMonthlyCost())}
+                          </Typography>
+                          <Typography variant="body2" component="p">
+                            {product.name} {this.getPackage().name} package with {this.getNumTvs(product)} TV(s)
+                          </Typography>
+                        </CardContent>
+                    </Card>           
+                    )}
+                    </Box>
                   </Box>
-                </Box>
-              <FormControl className={classes.formControl}>
-                <div className={classes.fullWidth}>
-                <InputLabel id="internet-select">Internet</InputLabel>
-                  <Select className={classes.fullWidth}
-                    labelId="internet-select"
-                    id="internet-select"
-                    value={this.state.selectedInternetId}
-                    onChange={this.updateInternetSelect}>
-                    {
-                      internets.map((internet, key) => {
-                        return <MenuItem value={internet.name} key={key}>{internet.name}</MenuItem>
-                      })
-                    }
-                  </Select>
-                </div>
-              </FormControl>
+
+                  <Box className={classes.main}>
+                  <Box className={classes.sub}>
+                <FormControl className={classes.formControl}>
+                  <div className={classes.fullWidth}>
+                  <InputLabel id="internet-select">Internet</InputLabel>
+                    <Select className={classes.fullWidth}
+                      labelId="internet-select"
+                      id="internet-select"
+                      value={this.state.selectedInternetId}
+                      onChange={this.updateInternetSelect}>
+                      {
+                        internets.map((internet, key) => {
+                          return <MenuItem value={internet.name} key={key}>{internet.name}</MenuItem>
+                        })
+                      }
+                    </Select>
+                  </div>
+                </FormControl>
 
               {this.state.selectedInternetId && (
               <FormControl className={classes.formControl}>
@@ -403,6 +406,7 @@ class PricingCalculator extends React.Component {
                 </div>
               </FormControl>
             )}
+            
 
             {this.state.selectedSpeedId && (
               <FormControl className={classes.formControl}>
@@ -422,8 +426,8 @@ class PricingCalculator extends React.Component {
               </div>
             </FormControl>
             )}
-            
-            <div className="internetCard">
+            </Box>
+            <Box className={classes.card}>         
               {this.state.selectedSpeedId && (
                 <Card className={classes.root}>
                   <CardContent>
@@ -440,10 +444,11 @@ class PricingCalculator extends React.Component {
                       {this.getCurrency(speedWithPrice.intPrice)}
                     </Typography>
                   </CardContent>
-                </Card>           
+                </Card>        
               )}
-            </div>
-      </div>
+              </Box> 
+          </Box>
+        </div>
       );
     }
 
