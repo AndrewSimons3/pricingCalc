@@ -462,7 +462,7 @@ class PricingCalculator extends React.Component {
                     {this.getCurrency(speedWithPrice.install)}
                     </Typography> */}
                     <Typography className={classes.price} variant="h5" component="h2">
-                      test
+                      Price
                     </Typography>
                   </CardContent>
                 </Card>        
