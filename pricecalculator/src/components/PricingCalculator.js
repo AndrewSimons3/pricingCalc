@@ -277,7 +277,7 @@ class PricingCalculator extends React.Component {
               <Box className={classes.sub}>
                 <FormControl className={classes.formControl}>
                   <div className={classes.fullWidth}>
-                  <InputLabel id="product-select">TV</InputLabel>
+                  <InputLabel id="product-select">Stand-alone TV</InputLabel>
                     <Select className={classes.fullWidth}
                       labelId="products"
                       id="product-select"
@@ -376,7 +376,7 @@ class PricingCalculator extends React.Component {
               <Box className={classes.sub}>
                 <FormControl className={classes.formControl}>
                   <div className={classes.fullWidth}>
-                  <InputLabel id="internet-select">Internet</InputLabel>
+                  <InputLabel id="internet-select">Stand-alone Internet</InputLabel>
                     <Select className={classes.fullWidth}
                       labelId="internet-select"
                       id="internet-select"
