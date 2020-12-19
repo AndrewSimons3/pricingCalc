@@ -372,8 +372,8 @@ class PricingCalculator extends React.Component {
                     </Box>
                   </Box>
 
-                  <Box className={classes.main}>
-                  <Box className={classes.sub}>
+            <Box className={classes.main}>
+              <Box className={classes.sub}>
                 <FormControl className={classes.formControl}>
                   <div className={classes.fullWidth}>
                   <InputLabel id="internet-select">Internet</InputLabel>
