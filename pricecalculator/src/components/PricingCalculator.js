@@ -65,6 +65,9 @@ const useStyles = (theme) => ({
   },
   card: {
     margin: 'auto'
+  },
+  totalCard: {
+    margin: '5%'
   }
 });
 
@@ -448,6 +451,23 @@ class PricingCalculator extends React.Component {
               )}
               </Box> 
           </Box>
+          <Box className={classes.totalCard}>         
+              {(
+                <Card className={classes.root}>
+                  <CardContent>
+                    <Typography className={classes.title} color="textSecondary" gutterBottom>
+                      Total Cost
+                    </Typography>
+                    {/* <Typography className={classes.price} variant="h5" component="h2">
+                    {this.getCurrency(speedWithPrice.install)}
+                    </Typography> */}
+                    <Typography className={classes.price} variant="h5" component="h2">
+                      test
+                    </Typography>
+                  </CardContent>
+                </Card>        
+              )}
+              </Box> 
         </div>
       );
     }
