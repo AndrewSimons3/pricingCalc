@@ -413,7 +413,7 @@ class PricingCalculator extends React.Component {
             {this.state.selectedSpeedId && (
               <FormControl className={classes.formControl}>
                 <div className={classes.fullWidth}>
-                 <InputLabel id="equipment-select">Internet Equipment!</InputLabel>
+                 <InputLabel id="equipment-select">Internet Equipment!!!!!</InputLabel>
                  <Select className={classes.fullWidth}
                     labelId="equipment"
                     id="equipment-select"
