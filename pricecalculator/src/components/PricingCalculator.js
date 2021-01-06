@@ -455,7 +455,7 @@ class PricingCalculator extends React.Component {
                 <Card className={classes.root}>
                   <CardContent>
                     <Typography className={classes.title} color="textSecondary" gutterBottom>
-                      Total Cost
+                      Total Cost...
                     </Typography>
                     {/* <Typography className={classes.price} variant="h5" component="h2">
                     {this.getCurrency(speedWithPrice.install)}
