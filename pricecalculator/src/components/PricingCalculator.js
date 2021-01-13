@@ -474,7 +474,7 @@ class PricingCalculator extends React.Component {
     return(
       <div>
          <div>
-         <span>Loading</span>
+         <span>Loading...</span>
          </div>    
       </div>
     )
