@@ -47,7 +47,7 @@ export default function AutoGrid() {
           <Paper className={classes.paper}>Oncor</Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>12 Months</Paper>
+          <Paper className={classes.paper}>12 Month</Paper>
         </Grid>
         <Grid item xs>
           <Paper className={classes.paper}>24 Months</Paper>
@@ -86,7 +86,7 @@ export default function AutoGrid() {
       </Grid>
       <Grid container>
         <Grid item xs>
-          <Paper className={classes.paper}>Chariot Energy</Paper>
+          <Paper className={classes.paper}>Chariot Energy!!</Paper>
         </Grid>
         <Grid item xs>
           <Paper className={classes.paper}>10.9 2000kwph<br></br>10.8 1000kwph<br></br>11.3 500kwph</Paper>
