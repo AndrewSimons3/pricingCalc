@@ -75,7 +75,15 @@ class PricingCalculator extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {selectedProductId: "", selectedPackageId: "", selectedEquipmentId: "", selectedNumOfTvs: 1, selectedInternetId: "", selectedSpeedId: "", selectedintEquipmentId: ""}
+    this.state = {
+      selectedProductId: "", 
+      selectedPackageId: "", 
+      selectedEquipmentId: "", 
+      selectedNumOfTvs: 1, 
+      selectedInternetId: "", 
+      selectedSpeedId: "", 
+      selectedintEquipmentId: ""
+    }
 
 
     this.updateProductSelect = this.updateProductSelect.bind(this)
@@ -157,27 +165,27 @@ class PricingCalculator extends React.Component {
 
   updateNumOfTvsSelect(event) {
     this.setState({selectedNumOfTvs: event.target.value})
-  }
+  };
 
   updateSpeedSelect(event) {
     this.setState({selectedSpeedId: event.target.value})
-  }
+  };
 
   updateIntEquipmentSelect(event) {
     this.setState({selectedIntEquipmentId: event.target.value})
-  }
+  };
 
   getProduct(productId) {
     return this.props.products.find(product => {
       return product.name === productId
     })
-  }
+  };
 
   getInternet(internetId) {
     return this.props.internets.find(internet => {
       return internet.name === internetId
     })
-  }
+  };
 
   getPackages() {
     if (!this.state.selectedProductId) {
@@ -264,8 +272,7 @@ class PricingCalculator extends React.Component {
       speedWithPrice = intSpeeds.find( (speedWithPrice) => {
         return speedWithPrice.speed == this.state.selectedSpeedId
       })
-    }
-    console.log(packages);
+    };
 
     if (products && products.length > 0) {
       const product = this.getProduct(this.state.selectedProductId)
@@ -413,7 +420,7 @@ class PricingCalculator extends React.Component {
             {this.state.selectedSpeedId && (
               <FormControl className={classes.formControl}>
                 <div className={classes.fullWidth}>
-                 <InputLabel id="equipment-select">Internet Equipment!!!!!</InputLabel>
+                 <InputLabel id="equipment-select">Internet Equipment</InputLabel>
                  <Select className={classes.fullWidth}
                     labelId="equipment"
                     id="equipment-select"
