@@ -136,7 +136,6 @@ class PricingCalculator extends React.Component {
     const internets = this.getInternet(internetId)
     const intSpeeds = internets.intSpeeds
     const intEquipment = internets.equipment
-    console.log(intSpeeds)
     var speedId = undefined
     var intEquipmentId = undefined
 
@@ -216,13 +215,17 @@ class PricingCalculator extends React.Component {
         style: 'currency',
         currency: 'USD',
         minimumFractionDigits: 2
+
       })
     return formatter.format(decimalValue)
   }
 
   getTotalMonthlyCost() {
     const aPackage = this.getPackage()
-    return aPackage.price
+    const equipment = this.getEquipment()
+    console.dir(equipment)
+    return aPackage.price + equipment.fee
+  
   }
 
   getUpFrontCost(product) {
@@ -245,12 +248,21 @@ class PricingCalculator extends React.Component {
     })
   }
 
-  getIntEquipment() {
+  getIntEquipments() {
     if (!this.state.selectedInternetId) {
       return null
     }
     const internets = this.getInternet(this.state.selectedInternetId)
     return internets.equipment
+  }
+
+  getIntEquipment(intEquipments) {
+    if (!this.state.selectedIntEquipmentId || !intEquipments) {
+      return null
+    }
+    return intEquipments.find(intEquipment => {
+      return intEquipment.name === this.state.selectedIntEquipmentId
+    })
   }
 
   getNumTvs(product) {
@@ -265,7 +277,10 @@ class PricingCalculator extends React.Component {
     const packages = this.getPackages(products)
     const equipment = this.getEquipment(products)
     const intSpeeds = this.getIntSpeeds(internets)
-    const intEquipment = this.getIntEquipment(internets)
+    const intEquipments = this.getIntEquipments(internets)
+    const intEquipment = this.getIntEquipment(intEquipments)
+    const intEquipmentFee = intEquipment ? intEquipment.fee : 0;
+    console.log(intEquipment)
     var speedWithPrice = null
     
     if (this.state.selectedSpeedId) {
@@ -367,7 +382,7 @@ class PricingCalculator extends React.Component {
                             Total Monthly Cost
                           </Typography>
                           <Typography className={classes.price} variant="h5" component="h2">
-                            {this.getCurrency(this.getTotalMonthlyCost())}
+                            {'asdf'}
                           </Typography>
                           <Typography variant="body2" component="p">
                             {product.name} {this.getPackage().name} package with {this.getNumTvs(product)} TV(s)
@@ -427,7 +442,7 @@ class PricingCalculator extends React.Component {
                     value={this.state.selectedIntEquipmentId}
                     onChange={this.updateIntEquipmentSelect}>
                     {
-                      intEquipment.map((equipment, key) => {
+                      intEquipments.map((equipment, key) => {
                         return <MenuItem value={equipment.name} key={key}>{equipment.name}</MenuItem>
                       })
                     }
@@ -437,7 +452,7 @@ class PricingCalculator extends React.Component {
             )}
             </Box>
             <Box className={classes.card}>         
-              {this.state.selectedSpeedId && (
+              {this.state.selectedSpeedId && speedWithPrice && (
                 <Card className={classes.root}>
                   <CardContent>
                     <Typography className={classes.title} color="textSecondary" gutterBottom>
@@ -450,7 +465,7 @@ class PricingCalculator extends React.Component {
                       Total Monthly Cost
                     </Typography>
                     <Typography className={classes.price} variant="h5" component="h2">
-                      {this.getCurrency(speedWithPrice.intPrice)}
+                      {this.getCurrency(speedWithPrice.intPrice + intEquipmentFee)}
                     </Typography>
                   </CardContent>
                 </Card>        
