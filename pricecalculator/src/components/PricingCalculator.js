@@ -382,7 +382,7 @@ class PricingCalculator extends React.Component {
                             Total Monthly Cost
                           </Typography>
                           <Typography className={classes.price} variant="h5" component="h2">
-                            {'asdf'}
+                            {this.getCurrency(this.getTotalMonthlyCost(product))}
                           </Typography>
                           <Typography variant="body2" component="p">
                             {product.name} {this.getPackage().name} package with {this.getNumTvs(product)} TV(s)
