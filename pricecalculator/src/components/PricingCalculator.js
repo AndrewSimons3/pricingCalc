@@ -202,7 +202,7 @@ class PricingCalculator extends React.Component {
     return internets.intSpeeds
   }
 
-  getEquipment() {
+  getProductEquipments() {
     if (!this.state.selectedProductId) {
       return null
     }
@@ -215,23 +215,24 @@ class PricingCalculator extends React.Component {
         style: 'currency',
         currency: 'USD',
         minimumFractionDigits: 2
-
       })
     return formatter.format(decimalValue)
   }
 
   getTotalMonthlyCost() {
     const aPackage = this.getPackage()
-    const equipment = this.getEquipment()
-    console.dir(equipment)
-    return aPackage.price + equipment.fee
-  
+    return aPackage.price
   }
 
   getUpFrontCost(product) {
     const tvCost = this.state.selectedNumOfTvs
     const initialCost = product.upfrontcost
-    return tvCost + initialCost
+
+    const productEquipments = this.getProductEquipments()
+    const equipment = productEquipments.find(productEquipment => {
+      return productEquipment.name === this.state.selectedEquipmentId
+    })
+    return tvCost + initialCost + equipment.fee
   }
 
   getPackage() {
@@ -275,7 +276,7 @@ class PricingCalculator extends React.Component {
 
     const { products, classes, internets } = this.props;
     const packages = this.getPackages(products)
-    const equipment = this.getEquipment(products)
+    const equipment = this.getProductEquipments(products)
     const intSpeeds = this.getIntSpeeds(internets)
     const intEquipments = this.getIntEquipments(internets)
     const intEquipment = this.getIntEquipment(intEquipments)
@@ -382,7 +383,7 @@ class PricingCalculator extends React.Component {
                             Total Monthly Cost
                           </Typography>
                           <Typography className={classes.price} variant="h5" component="h2">
-                            {this.getCurrency(this.getTotalMonthlyCost(product))}
+                            {this.getCurrency(this.getTotalMonthlyCost())}
                           </Typography>
                           <Typography variant="body2" component="p">
                             {product.name} {this.getPackage().name} package with {this.getNumTvs(product)} TV(s)
